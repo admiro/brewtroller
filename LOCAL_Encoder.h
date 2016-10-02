@@ -38,7 +38,7 @@
   	#define ALPS		0
   	#define CUI			1
   
-  	#define EXTERNAL_INT	0
+  	#define EXTERNAL_INT 0
   	#define PINCHANCE_INT 1
   
   	#define CUI_DEBOUNCE		50

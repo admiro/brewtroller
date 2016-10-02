@@ -1,4 +1,4 @@
-#define BUILD 16
+#define BUILD 1
 /*  
   Copyright (C) 2009, 2010 Matt Reba, Jeremiah Dillingham
 
@@ -66,9 +66,9 @@ Then use Tools - Board - Boards Manager to install OpenTroller ATMEGA1284P by OS
 #include <EEPROM.h>
 #include "wiring_private.h"
 #include "LOCAL_Encoder.h"
-#ifdef RGBIO8_ENABLE
+//#ifdef RGBIO8_ENABLE
   #include "RGBIO8.h"
-#endif
+//#endif
 #include "Vol_Bubbler.h"
 
 #define ARRAY_LENGTH(ARRAYOBJ) (sizeof(ARRAYOBJ) / sizeof(ARRAYOBJ[0]))

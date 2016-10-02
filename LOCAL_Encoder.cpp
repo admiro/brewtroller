@@ -240,14 +240,15 @@
     _aPin.setup(encA, INPUT);
     _bPin.setup(encB, INPUT);
   
-    _activeLow = false;
+        _activeLow = false;
+    
   
     // attach PinChange Interrupts
     noInterrupts();
     _intMode = PINCHANCE_INT;
     _ePin.attachPCInt(CHANGE, enterISR);
     if (encType == ALPS)
-      _aPin.attachPCInt(CHANGE, alpsISR);
+      _aPin.attachPCInt(CHANGE, alpsISR); 
     else
       _aPin.attachPCInt(RISING, cuiISR);
     interrupts();
@@ -303,7 +304,7 @@
   }
   
   
-  // set activeLow state
+  // set state
   //
   void encoderGPIO::setActiveLow(bool state)
   {
@@ -416,7 +417,7 @@
   //
   void encoderGPIO::alpsHandler(void) 
   {
-    	if(_aPin.get() == _bPin.get())
+    if(_aPin.get() == _bPin.get())    
   		decCount();
   	else
   		incCount();
@@ -428,9 +429,11 @@
   {
   	//Read EncB
   	if(_bPin.get() == LOW)
-  		incCount();
+    {delay(ENCODER_DEBOUNCE);       //Admiro simple debounce
+  		incCount();}
   	else
-  		decCount();
+    {delay(ENCODER_DEBOUNCE);
+  		decCount();}
   } 
   
   void encoderGPIO::enterHandler(void) 

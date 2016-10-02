@@ -284,7 +284,7 @@ void screenHome (enum ScreenSignal signal) {
       LCD.print_P(2, 4, PSTR("Build"));
       char numText[7];
       LCD.lPad(2, 10, itoa(BUILD, numText, 10), 4, '0');
-      LCD.print_P(3, 2, PSTR("github.com/OSCSYS"));
+      LCD.print_P(3, 1, PSTR("Admiro Arduino Mega"));
       break;
       
     case SCREENSIGNAL_UPDATE:

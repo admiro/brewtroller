@@ -1,74 +1,80 @@
 /*
-OpenTroller DX1 Hardware Configuration
+Arduino Mega 1280 Admiro
 */
 
 #ifndef BT_HWPROFILE
 #define BT_HWPROFILE
 
-  #define ENCODER_I2C
-  #define ENCODER_I2CADDR 0x01
+  //**********************************************************************************
+  // ENCODER TYPE
+  //**********************************************************************************
+  // You must uncomment one and only one of the following ENCODER_ definitions
+  // Use ENCODER_ALPS for ALPS and Panasonic Encoders
+  // Use ENCODER_CUI for older CUI encoders
+  //
+  //#define ENCODER_TYPE ALPS
+  #define ENCODER_TYPE CUI
+  //**********************************************************************************
 
-  #define OUTPUTBANK_GPIO
-  #define OUTPUTBANK_GPIO_BANKNAME "DX1"
-  #define OUTPUTBANK_GPIO_COUNT 14
-  #define OUTPUTBANK_GPIO_PINS {28, 29, 30, 31, 7, 6, 3, 4, 12, 15, 14, 13, 1, 2}
-  #define OUTPUTBANK_GPIO_OUTPUTNAMES "Out 1\0Out 2\0Out 3\0Out 4\0Out 5\0Out 6\0Out 7\0Out 8\0Out 9\0Out 10\0Out 11\0Out 12\0Out 13\0Out 14"
-    
-  #define OUTPUTBANK_MODBUS
-  
-  #define ANALOGOUTPUTS_HWPWM
-  #define ANALOGOUTPUTS_HWPWM_PINCOUNT 8
-  #define ANALOGOUTPUTS_HWPWM_PINS {7, 6, 3, 4, 12, 15, 14, 13}
-  #define ANALOGOUTPUTS_HWPWM_TIMERS {3, 3, 1, 2, 2, 1}
-  #define ANALOGOUTPUTS_HWPWM_NAMES "Out 5\0Out 6\0Out 7\0Out 8\0Out 9\0Out 10\0Out 11\0Out 12"
-  
-  #define RS485_SERIAL_PORT 1
-  #define RS485_RTS_PIN    23
+  #define ENCODER_OLD_CONSTRUCTOR   //Admiro Mega profile
+  #define ENCA_PIN 21               
+  #define ENCB_PIN 20               
+  #define ENTER_PIN 18              
+  #define ENTER_INT 5               
+  #define ENCA_INT 2                
+  #define ENCODER_ACTIVELOW
+  #define ENCODER_DEBOUNCE 200  
 
-  #define DIGITAL_INPUTS
-  #define DIGITAL_INPUTS_COUNT 5
-  //Silkscreen puts digital input 1 next to com which is OPT5 in Eagle file. Reversing order of inputs:
-  #define DIGITAL_INPUTS_PINS {5, 18, 19, 20, 21}
-  
-  #define ESTOP_PIN 22
+  #define OUTPUTBANK_GPIO           //Admiro Mega profile  
+  #define OUTPUTBANK_GPIO_BANKNAME "MEGA"
+  #define OUTPUTBANK_GPIO_COUNT 4
+  #define OUTPUTBANK_GPIO_PINS {9, 10, 11, 12}
+  #define OUTPUTBANK_GPIO_OUTPUTNAMES "HLT\0Mash\0Kettle\0Alarm"
+  #define OUTPUTBANK_GPIO_ACTIVELOW_PINS {true, true ,false, false} //Admiro Added active low output configured in HWProfile.w (ie. relay module)
 
+  #define HLTVOL_APIN 3
+  #define MASHVOL_APIN 2
+  #define KETTLEVOL_APIN 1
+  #define STEAMPRESS_APIN 0
+  
   #define ANALOGINPUTS_GPIO
-  #define ANALOGINPUTS_GPIO_COUNT 4
-  #define ANALOGINPUTS_GPIO_PINS {7, 6, 5, 4}
-  #define ANALOGINPUTS_GPIO_NAMES "Analog 1\0Analog 2\0Analog 3\0Analog 4"
+  #define ANALOGINPUTS_GPIO_COUNT 3
+  #define ANALOGINPUTS_GPIO_PINS {3, 2, 1}
+  #define ANALOGINPUTS_GPIO_NAMES "HLT\0Mash\0Kettle"
 
-  #define ANALOGINPUTS_MODBUS
-
-
-  #define UI_LCD_I2C
-  #define UI_LCD_I2CADDR 0x01
-  #define UI_DISPLAY_SETUP
-  #define LCD_DEFAULT_CONTRAST 100
-  #define LCD_DEFAULT_BRIGHTNESS 255
+  #define UI_LCD_4BIT               //Admiro Mega profile
+  #define LCD_RS_PIN 22
+  #define LCD_ENABLE_PIN 23
+  #define LCD_DATA4_PIN 24
+  #define LCD_DATA5_PIN 25
+  #define LCD_DATA6_PIN 26
+  #define LCD_DATA7_PIN 27
   
+ 
   // BTPD_SUPPORT: Enables use of BrewTroller PID Display devices on I2C bus
-  #define BTPD_SUPPORT
+ // #define BTPD_SUPPORT
   
   // BTNIC_EMBEDDED: Enables use of on-board I2C Ethernet module
-  #define BTNIC_EMBEDDED
+ // #define BTNIC_EMBEDDED
   
-  #define HEARTBEAT
-  #define HEARTBEAT_PIN 0
+//  #define HEARTBEAT
+//  #define HEARTBEAT_PIN 0
 
   //**********************************************************************************
   // OneWire Temperature Sensor Options
   //**********************************************************************************
-  // TS_ONEWIRE: Enables use of OneWire Temperature Sensors
-  // TS_ONEWIRE_I2C: Enables use of DS2482 I2C 1-Wire Bus Master
+  // TS_ONEWIRE: Enables use of OneWire Temperature Sensors (Future logic may
+  // support alternatives temperature sensor options.)
   #define TS_ONEWIRE
-  #define TS_ONEWIRE_I2C
+  #define TS_ONEWIRE_GPIO
+  #define TEMP_PIN 14
   
   // TS_ONEWIRE_PPWR: Specifies whether parasite power is used for OneWire temperature
   // sensors. Parasite power allows sensors to obtain their power from the data line
   // but significantly increases the time required to read the temperature (94-750ms
   // based on resolution versus 10ms with dedicated power).
-  #define TS_ONEWIRE_PPWR 1
-  
+  #define TS_ONEWIRE_PPWR 0
+
   // TS_ONEWIRE_RES: OneWire Temperature Sensor Resolution (9-bit - 12-bit). Valid
   // options are: 9, 10, 11, 12). Unless parasite power is being used the recommended
   // setting is 12-bit (for DS18B20 sensors). DS18S20 sensors can only operate at a max
@@ -79,11 +85,11 @@ OpenTroller DX1 Hardware Configuration
   //   10-bit (0.25C   / 0.45F  ) = 188ms 
   //    9-bit (0.5C    / 0.9F   ) =  94ms   
   #define TS_ONEWIRE_RES 11
-  
+
   // TS_ONEWIRE_FASTREAD: Enables faster reads of temperatures by reading only the first
   // 2 bytes of temperature data and ignoring CRC check.
   #define TS_ONEWIRE_FASTREAD
-  
+
   // DS2482_ADDR: I2C Address of DS2482 OneWire Master (used for TS_OneWire_I2C)
   // Should be 0x18, 0x19, 0x1A, 0x1B
   #define DS2482_ADDR 0x1B
@@ -109,5 +115,5 @@ OpenTroller DX1 Hardware Configuration
   // Build 419 this was hard coded to 9600. Starting with Build 419 the default rate
   // was increased to 115200 but can be manually set using this compile option.
   #define SERIAL0_BAUDRATE 115200
-
+  
 #endif

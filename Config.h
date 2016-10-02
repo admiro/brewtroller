@@ -12,7 +12,7 @@
 // By default BrewTroller will use US Units
 // Uncomment USEMETRIC below to use metric instead
 //
-//#define USEMETRIC
+#define USEMETRIC
 //**********************************************************************************
 
 
@@ -43,8 +43,8 @@
 // When the BUZZER_CYCLE_TIME is zero there is no modulation so the buzzer will buzz  
 // a steady sound
 //
-//#define BUZZER_CYCLE_TIME 1200 //the value is in milliseconds for the ON and OFF buzzer cycle
-//#define BUZZER_ON_TIME 500     //the duration in milliseconds where the alarm will stay on
+#define BUZZER_CYCLE_TIME 1200 //the value is in milliseconds for the ON and OFF buzzer cycle
+#define BUZZER_ON_TIME 500     //the duration in milliseconds where the alarm will stay on
 //**********************************************************************************
 
 
@@ -151,7 +151,7 @@
 //**********************************************************************************
 // RGBIO8 Support
 //**********************************************************************************
-#define RGBIO8_ENABLE
+//#define RGBIO8_ENABLE
 
 //**********************************************************************************
 // PID AutoTune

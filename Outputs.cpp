@@ -42,9 +42,14 @@ Documentation, Forums and more information available at http://www.brewtroller.c
     free(outputPins);
   }
 
-  void OutputBankGPIO::set(unsigned long outputsState) {
+  void OutputBankGPIO::set(unsigned long outputsState) { 
+    byte activelowpinNums[OUTPUTBANK_GPIO_COUNT] = OUTPUTBANK_GPIO_ACTIVELOW_PINS; //Admiro Added active low output configured in HWProfile.w (ie. relay module)
     for (byte i = 0; i < OUTPUTBANK_GPIO_COUNT; i++) {
-      outputPins[i].set((outputsState>>i) & 1);
+      //outputPins[i].set((outputsState>>i) & 1); //1                              //Brewtroller original code
+     if (activelowpinNums[i])                                                      //Admiro
+     if (outputsState & (1<<i)) outputPins[i].clear(); else outputPins[i].set();   //Admiro
+     else                                                                          //Admiro
+     if (outputsState & (1<<i)) outputPins[i].set(); else outputPins[i].clear();   //Admiro
     }
   }
   
