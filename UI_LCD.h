@@ -46,8 +46,8 @@ Documentation, Forums and more information available at http://www.brewtroller.c
   // a delay seems to help or resolve completely. You may comment out the following
   // lines to remove this delay between a print of each character.
   //
-  //#define LCD_DELAY_CURSOR 60
-  //#define LCD_DELAY_CHAR 60
+  #define LCD_DELAY_CURSOR 60
+  #define LCD_DELAY_CHAR 60
   //**********************************************************************************
   
   class LCD4Bit

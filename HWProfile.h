@@ -1,4 +1,4 @@
-/*
+  /*
 Arduino Mega 1280 Admiro
 */
 
@@ -19,18 +19,18 @@ Arduino Mega 1280 Admiro
   #define ENCODER_OLD_CONSTRUCTOR   //Admiro Mega profile
   #define ENCA_PIN 21               
   #define ENCB_PIN 20               
-  #define ENTER_PIN 18              
-  #define ENTER_INT 5               
+  #define ENTER_PIN 19              
+  #define ENTER_INT 4               
   #define ENCA_INT 2                
   #define ENCODER_ACTIVELOW
   #define ENCODER_DEBOUNCE 200  
 
   #define OUTPUTBANK_GPIO           //Admiro Mega profile  
   #define OUTPUTBANK_GPIO_BANKNAME "MEGA"
-  #define OUTPUTBANK_GPIO_COUNT 4
-  #define OUTPUTBANK_GPIO_PINS {9, 10, 11, 12}
-  #define OUTPUTBANK_GPIO_OUTPUTNAMES "HLT\0Mash\0Kettle\0Alarm"
-  #define OUTPUTBANK_GPIO_ACTIVELOW_PINS {true, true ,false, false} //Admiro Added active low output configured in HWProfile.w (ie. relay module)
+  #define OUTPUTBANK_GPIO_COUNT 7
+  #define OUTPUTBANK_GPIO_PINS {8, 9, 10, 11, 14, 15, 16}
+  #define OUTPUTBANK_GPIO_OUTPUTNAMES "HLT\0Mash\0Kettle\0Alarm\0Led1\0Led2\0Led3"
+  #define OUTPUTBANK_GPIO_ACTIVELOW_PINS {true, true ,false, false, false, false, false} //Admiro Added active low output configured in HWProfile.w (ie. relay module)
 
   #define HLTVOL_APIN 3
   #define MASHVOL_APIN 2
@@ -43,19 +43,20 @@ Arduino Mega 1280 Admiro
   #define ANALOGINPUTS_GPIO_NAMES "HLT\0Mash\0Kettle"
 
   #define UI_LCD_4BIT               //Admiro Mega profile
-  #define LCD_RS_PIN 22
-  #define LCD_ENABLE_PIN 23
-  #define LCD_DATA4_PIN 24
-  #define LCD_DATA5_PIN 25
-  #define LCD_DATA6_PIN 26
-  #define LCD_DATA7_PIN 27
-  
+  #define LCD_RS_PIN 2
+  #define LCD_ENABLE_PIN 3
+  #define LCD_DATA4_PIN 4
+  #define LCD_DATA5_PIN 5
+  #define LCD_DATA6_PIN 6
+  #define LCD_DATA7_PIN 7
+
+  #define HLT_AS_KETTLE //Admiro remaps the Kettle temp sensor to the HLT's device
  
   // BTPD_SUPPORT: Enables use of BrewTroller PID Display devices on I2C bus
  // #define BTPD_SUPPORT
   
   // BTNIC_EMBEDDED: Enables use of on-board I2C Ethernet module
- // #define BTNIC_EMBEDDED
+//  #define BTNIC_EMBEDDED
   
 //  #define HEARTBEAT
 //  #define HEARTBEAT_PIN 0
@@ -67,7 +68,7 @@ Arduino Mega 1280 Admiro
   // support alternatives temperature sensor options.)
   #define TS_ONEWIRE
   #define TS_ONEWIRE_GPIO
-  #define TEMP_PIN 14
+  #define TEMP_PIN 12
   
   // TS_ONEWIRE_PPWR: Specifies whether parasite power is used for OneWire temperature
   // sensors. Parasite power allows sensors to obtain their power from the data line
