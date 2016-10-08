@@ -30,7 +30,7 @@ Arduino Mega 1280 Admiro
   #define OUTPUTBANK_GPIO_COUNT 7
   #define OUTPUTBANK_GPIO_PINS {8, 9, 10, 11, 14, 15, 16}
   #define OUTPUTBANK_GPIO_OUTPUTNAMES "HLT\0Mash\0Kettle\0Alarm\0Led1\0Led2\0Led3"
-  #define OUTPUTBANK_GPIO_ACTIVELOW_PINS {true, true ,false, false, false, false, false} //Admiro Added active low output configured in HWProfile.w (ie. relay module)
+  #define OUTPUTBANK_GPIO_ACTIVELOW_PINS {false, false ,false, false, false, false, false} //Admiro Added active low output configured in HWProfile.w (ie. relay module)
 
   #define HLTVOL_APIN 3
   #define MASHVOL_APIN 2

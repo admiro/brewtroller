@@ -1,3 +1,5 @@
+
+
 /*  
    Copyright (C) 2009, 2010 Matt Reba, Jeremiah Dillingham
 
@@ -31,7 +33,8 @@ Documentation, Forums and more information available at http://www.brewtroller.c
   #include "Enum.h"
   #include "HWProfile.h"
   #include <Wire.h>
-  #include "LOCAL_LiquidCrystalFP.h"
+ // #include "LOCAL_LiquidCrystalFP.h"
+  #include <LiquidCrystal.h>  //Admiro - if you want to use no-FP version remove two LiquidCrystalFP file from sketch
   #include <stdlib.h> // for malloc and free
   #include <EEPROM.h>
 
@@ -46,8 +49,8 @@ Documentation, Forums and more information available at http://www.brewtroller.c
   // a delay seems to help or resolve completely. You may comment out the following
   // lines to remove this delay between a print of each character.
   //
-  #define LCD_DELAY_CURSOR 60
-  #define LCD_DELAY_CHAR 60
+//#define LCD_DELAY_CURSOR 240
+//#define LCD_DELAY_CHAR 240
   //**********************************************************************************
   
   class LCD4Bit
